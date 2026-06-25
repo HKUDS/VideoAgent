@@ -13,8 +13,13 @@ llm:
   gpt_base_url: ""  
 
   # MLLM for caption and fine-grained video understanding
-  gemini_api_key: ""  
-  gemini_base_url: ""  
+  gemini_api_key: ""
+  gemini_base_url: ""
+
+  # Optional: TwelveLabs Pegasus for native video understanding/Q&A
+  # (no local transcription needed). Free key at https://twelvelabs.io
+  twelvelabs_api_key: ""
+  twelvelabs_base_url: ""
 
 
 

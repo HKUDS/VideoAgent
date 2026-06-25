@@ -381,7 +381,25 @@ llm:
   # MLLM for caption and fine-grained video understanding
   gemini_api_key: ""  
   gemini_base_url: ""  
+
+  # Optional: TwelveLabs Pegasus for native video understanding/Q&A
+  twelvelabs_api_key: ""
+  twelvelabs_base_url: ""
 ```
+
+#### 🎥 Optional: TwelveLabs Pegasus (native video understanding)
+
+The `PegasusVideoUnderstanding` agent answers questions about a video using
+[TwelveLabs](https://twelvelabs.io) Pegasus. Unlike the transcript-based Q&A
+agent, Pegasus understands the video natively (visuals **and** audio), so it
+works without local transcription and can reason about on-screen actions,
+scenes, and objects — not just speech. It accepts a local video file, a
+directory of videos, or a public video URL.
+
+This backend is **opt-in and non-breaking**: it only activates when you set
+`twelvelabs_api_key` above, and it leaves the default transcript-based flow
+untouched. You can grab a free API key at https://twelvelabs.io — there's a
+generous free tier.
 
 ### 🎯 **Usage**
 
@@ -460,6 +478,7 @@ We express our deepest gratitude to the numerous individuals and organizations t
 - [ImageBind](https://github.com/facebookresearch/ImageBind)
 - [Whisper](https://github.com/openai/whisper)
 - [Librosa](https://github.com/librosa/librosa)
+- [TwelveLabs](https://twelvelabs.io)
 
 
 ### 🎨 **Content Creators and Inspiration**
