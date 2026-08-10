@@ -31,5 +31,6 @@
     "CommentaryContentGenerator": "environment.roles.vid_comm.comm_story_gen",
     "NewsContentGenerator": "environment.roles.vid_news.news_story_gen",
     "VideoContentQA": "environment.roles.vid_qa.content_loader",
-    "VideoSummarizationGenerator": "environment.roles.vid_summ.summ_loader"
+    "VideoSummarizationGenerator": "environment.roles.vid_summ.summ_loader",
+    "WebSearcher": "environment.roles.web_searcher"
 }
