@@ -85,10 +85,16 @@ Video QA:
   - VideoContentQA
 Audio Overview:
   - VideoSummarizationGenerator
-
-
-
-
+Web Search:
+  - WebSearcher
+Current Information:
+  - WebSearcher
+Trend Research:
+  - WebSearcher
+News Search:
+  - WebSearcher
+Content Research:
+  - WebSearcher
 
 
 
