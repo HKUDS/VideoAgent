@@ -422,7 +422,7 @@ web research entirely, set `enabled: false` in `environment/config/config.yml`:
 
 ```yaml
 web_search:
-  enabled: true
+  enabled: false
   timeout_seconds: 30
 ```
 
