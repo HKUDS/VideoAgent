@@ -1,0 +1,7 @@
+# Focused graph/transport checks without the video, audio or GPU dependencies.
+mcp>=1.12.4,<2
+pydantic==2.9.2
+PyYAML==6.0.2
+openai==1.60.1
+regex
+tenacity

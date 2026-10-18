@@ -29,6 +29,7 @@ dependencies = [
   "networkx==3.1",
   "omegaconf==2.3.0",
   "openai==1.60.1",
+  "mcp>=1.12.4,<2",
   "onnxruntime-gpu==1.21.0",
   "onnxruntime==1.20.1",
   "openai-whisper==20240930",

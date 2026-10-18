@@ -400,6 +400,49 @@ The current LLM selections are optimized for each function.
 
 You can also adjust the model names in `VideoAgent\environment\config\llm.py` if needed.
 
+### 🌐 Web research for narration
+
+Ask VideoAgent to research public web sources before writing a news video, for
+example: “Research the latest Artemis mission context on the web, then create a
+short news narration using my reference video.” The **Web Research** intent adds
+`WebResearcher` to the available tools. In the generated graph, its
+`researched_reqs` output connects to `NewsContentGenerator.reqs`; the existing
+transcription and video tools still handle your local footage.
+
+Web research uses [Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp)
+at `https://search.parallel.ai/mcp` by default. Search runs in Fast mode and needs
+no Parallel account or API key. When the CLI asks for the research `query`, provide
+a focused public query of about three to six keywords. Only that query is sent to
+the search service. The role passes the original writing requirements, source
+excerpts and URLs to the narration generator. Review these sources before using
+the generated narration; web excerpts can contain inaccurate information.
+
+Existing news requests can continue to use the local transcript alone. To prevent
+web research entirely, set `enabled: false` in `environment/config/config.yml`:
+
+```yaml
+web_search:
+  enabled: true
+  timeout_seconds: 30
+```
+
+The timeout covers connection, discovery and search together. A disabled role,
+service error, free-tier quota limit or timeout stops the research step instead of
+substituting unsourced text. Ctrl+C interrupts the operation. LLM credentials for
+the graph router and narration generator are still configured as above.
+
+For focused development checks without downloading video models:
+
+```bash
+python -m venv .venv-research
+# Activate this environment using your platform's usual command, then:
+python -m pip install -r tests/requirements-web-research.txt
+python -m unittest discover -s tests -p test_web_researcher.py -v
+```
+
+These checks exercise the real graph dispatcher, news generator and MCP SDK with
+scripted model responses and an HTTP fixture; they do not call a live LLM.
+
 ---
 
 ## 🔮Demos
