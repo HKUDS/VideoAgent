@@ -36,3 +36,8 @@ llm:
   # MLLM for caption and fine-grained video understanding
 #  gemini_api_key: ""  
 #  gemini_base_url: ""  
+
+# Public web research only when requested in the agent graph.
+web_search:
+  enabled: true
+  timeout_seconds: 30

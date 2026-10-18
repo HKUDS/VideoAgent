@@ -1,4 +1,5 @@
 {
+    "WebResearcher": "environment.roles.web_researcher",
     "LoudnessNormalizer": "environment.roles.loudness_normalizer",
     "Resampler": "environment.roles.resampler",
     "Separator": "environment.roles.separator",
