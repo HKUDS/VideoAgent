@@ -20,7 +20,7 @@
 
 <div align="center">
 
-[English](readme.md) | [简体中文](readme_zh.md)
+[English](readme.md) | [简体中文](readme_zh.md) | [日本語](readme_ja.md)
 
 </div>
 
