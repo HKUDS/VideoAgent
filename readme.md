@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src='./assets/logo_new.png' width=40%/>
+<img src="./assets/logo_new.png" width="40%" alt="VideoAgent">
 
 <!-- # Open Agentic Video Intelligence -->
 <br>
@@ -253,15 +253,31 @@ GPU Memory: 8GB
 OS: Linux, Windows
 ```
 
-### 📥 **Clone and Install**
+### Install from PyPI
+
+In a Python 3.10 environment, install the core application and initialize a workspace:
+
+```bash
+python -m pip install videoagent
+mkdir videoagent-workspace
+cd videoagent-workspace
+videoagent init
+```
+
+Configure your providers in `environment/config/config.yml` and run `videoagent run` from the workspace. Install FFmpeg for video processing. Workflows that use local models also need the corresponding tools, runtime dependencies and model weights.
+
+### 📥 **Clone and Install the Full Media Environment**
 
 ```bash
 git clone https://github.com/HKUDS/VideoAgent.git
+cd VideoAgent
 conda create --name videoagent python=3.10
 conda activate videoagent
 conda install -y -c conda-forge pynini==2.1.5 ffmpeg
 pip install -r requirements.txt
 ```
+
+You can use this checkout as the workspace for either `videoagent run` or `python main.py`. The full dependency list is in `requirements-runtime.txt`. Download only the model weights needed by the workflow you intend to run.
 
 ### 📦 **Model Download**
 
@@ -388,8 +404,8 @@ llm:
 ### 🎯 **Usage**
 
 ```bash
-# With the configuration now complete, proceed to run the following instructions:
-python main.py
+# From your configured workspace:
+videoagent run
 # The console will output:
 User Requirement: ...
 # Requirement Example:

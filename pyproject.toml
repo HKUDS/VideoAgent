@@ -1,143 +1,49 @@
 [project]
-name = "VideoAgent"
+name = "videoagent"
 version = "0.1.0"
-description = "VideoAgent Toolkit"
-readme = "README.md"
+description = "Agentic video understanding, editing, and remaking"
+readme = "readme.md"
 requires-python = ">=3.10"
+license = "MIT"
 dependencies = [
-  "gdown",
-  "tqdm==4.67.1",
-  "demucs==4.0.1",
-  "loguru==0.7.3",
-  "pyloudnorm==0.1.1",
-  "librosa==0.10.2",
-  "richuru==0.1.1",
-  "praat-parselmouth==0.4.5",
-  "click==8.1.8",
-  "faster-whisper==1.1.1",
-  "funasr==1.1.5",
-  "modelscope==1.17.1",
-  "conformer==0.3.2",
-  "diffusers==0.29.0",
-  "gdown==5.1.0",
-  "gradio==5.4.0",
-  "grpcio-tools==1.48.2",
-  "hydra-core==1.3.2",
-  "HyperPyYAML==1.2.2",
-  "inflect==7.3.1",
-  "lightning==2.2.4",
-  "networkx==3.1",
-  "omegaconf==2.3.0",
-  "openai==1.60.1",
-  "onnxruntime-gpu==1.21.0",
-  "onnxruntime==1.20.1",
-  "openai-whisper==20240930",
-  "protobuf",
-  "pydantic==2.9.2",
-  "pyworld==0.3.4",
-  "rich==13.7.1",
-  "soundfile==0.12.1",
-  "tensorboard",
-  "torch==2.3.1",
-  "torchaudio==2.3.1",
-  "accelerate==0.30.1",
-  "bitsandbytes==0.43.1",
-  "moviepy==1.0.3",
-  "pytorchvideo @ git+https://github.com/facebookresearch/pytorchvideo.git@28fe037d212663c6a24f373b94cc5d478c8c1a1d",
-  "timm",
-  "ftfy",
-  "regex",
-  "einops",
-  "fvcore",
-  "eva-decord==0.6.1",
-  "iopath",
-  "matplotlib",
-  "types-regex",
-  "cartopy",
-  "ctranslate2==4.4.0",
-  "neo4j",
-  "hnswlib",
-  "xxhash",
-  "nano-vectordb",
-  "tiktoken",
-  "tenacity",
-
-  "transformers==4.40.1",
-  "uvicorn==0.30.0",
-  "wget==3.2",
-  "fastapi==0.115.6",
-  "fastapi-cli==0.0.4",
-  "WeTextProcessing==1.0.3",
-  "pandas",
-  "numba==0.61.0",
-  "numpy==1.25.0",
-  "scipy==1.15.2",
-  "PyYAML==6.0.2",
-  "tensorboardX",
-  "setuptools==75.8.0",
-  "g2p-en==2.1.0",
-  "resemblyzer==0.1.4",
-  "webrtcvad",
-  "scikit-learn==1.6.1",
-  "scikit-image==0.25.2",
-  "textgrid==1.6.1",
-  "jiwer==3.0.3",
-  "pycwt",
-  "PyWavelets",
-  "jieba",
-  "chardet",
-  "pretty_midi==0.2.9",
-  "pytorch-lightning==2.5.0.post0",
-  "h5py==3.12.1",
-  "pypinyin==0.39.0",
-  "g2pM==0.1.2.5",
-  "datasets==2.18.0",
-  "natsort==8.4.0",
-  "wandb==0.19.8",
-  "grpcio==1.70.0",
-  "kui==1.8.1",
-  "loralib==0.1.2",
-  "pyrootutils==1.0.4",
-  "vector_quantize_pytorch==1.14.24",
-  "resampy==0.4.3",
-  "einx[torch]==0.2.2",
-  "zstandard==0.23.0",
-  "pyaudio",
-  "opencc-python-reimplemented==0.1.7",
-  "silero-vad",
-  "ormsgpack",
-  "cachetools",
-  "huggingface-hub==0.29.2",
-  "munch==4.0.0",
-  "descript-audio-codec==1.0.0",
-  "pydub==0.25.1",
-  "FreeSimpleGUI==5.1.1",
-  "sounddevice==0.5.0",
-  "python-dotenv"
+    "openai==1.60.1",
+    "pydantic>=2.9,<3",
+    "PyYAML>=6,<7",
+    "regex",
+    "loguru==0.7.3",
 ]
-license = {text = "Apache"}
 
-[project.optional-dependencies]
-linux = [
-  "ttsfrd"
-]
+[project.urls]
+Homepage = "https://github.com/HKUDS/VideoAgent"
+Issues = "https://github.com/HKUDS/VideoAgent/issues"
 
 [project.scripts]
-fap = "fish_audio_preprocess.cli.__main__:cli"
+videoagent = "videoagent_cli:main"
 
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
 
-[tool.setuptools]
-packages = ["fish_audio_preprocess", "fish_speech", "tools", "imagebind"]
-package-dir = {"fish_audio_preprocess" = "tools/audio-preprocess/fish_audio_preprocess", "fish_speech" = "tools/fish-speech/fish_speech", "tools" = "tools/fish-speech/tools", "imagebind" = "tools/ImageBind/imagebind"}
+[tool.hatch.build]
+exclude = [
+    "**/__pycache__", "**/*.pyc", "**/.env*",
+    "environment/config/config.yml", "environment/config/user.yml",
+]
 
-[tool.setuptools.package-data]
-"imagebind" = ["bpe/bpe_simple_vocab_16e6.txt.gz"]
+[tool.hatch.build.targets.wheel]
+only-include = ["cli_entrypoints", "environment"]
+sources = { "cli_entrypoints" = "", "environment" = "videoagent_package/app/environment" }
+dev-mode-dirs = ["cli_entrypoints"]
 
-[tool.isort]
-profile = "black"
+[tool.hatch.build.targets.wheel.force-include]
+"main.py" = "videoagent_package/app/main.py"
+"requirements-runtime.txt" = "videoagent_package/app/requirements-runtime.txt"
+
+[tool.hatch.build.targets.sdist]
+only-include = [
+    "pyproject.toml", "readme.md", "readme_zh.md", "LICENSE",
+    "cli_entrypoints", "environment", "main.py", "requirements-runtime.txt",
+]
 
 
 

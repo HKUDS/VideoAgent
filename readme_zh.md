@@ -1,22 +1,23 @@
 <div align="center">
 
-<img src='./assets/logo_new.png' width=40%/>
+<img src="./assets/logo_new.png" width="40%" alt="VideoAgent">
 
 <!-- # Open Agentic Video Intelligence -->
 <br>
 
-**🌟 全面视频智能：理解、编辑和重塑的一体化框架**
+**🌟 全面视频智能：<br> 集理解、编辑和生成于一体的框架**
 
-<div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=24&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=600&lines=Welcome+to+VideoAgent;Next-Gen+Intelligent+Video+System" alt="Typing Animation" />
+<a href='https://space.bilibili.com/3546868449544308'><img src="https://img.shields.io/badge/bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white&labelColor=1a1a2e" /></a>&nbsp;
+<a href='https://www.youtube.com/@AI-Creator-is-here'><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=1a1a2e" /></a>&nbsp;
+<br>
+<a href="./Communication.md"><img src="https://img.shields.io/badge/💬Feishu-Group-07c160?style=for-the-badge&logoColor=white&labelColor=1a1a2e"></a>
+<a href="./Communication.md"><img src="https://img.shields.io/badge/WeChat-Group-07c160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=1a1a2e"></a>
+<br>
+<a href='https://arxiv.org/pdf/2606.23327'><img src='https://img.shields.io/badge/arXiv-2606.23327-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white&labelColor=1a1a2e' /></a>
+<br>
+<a href="https://trendshift.io/repositories/18548" target="_blank"><img src="https://trendshift.io/api/badge/repositories/18548" alt="HKUDS%2FVideoAgent | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+
 </div>
-
-<a href='https://space.bilibili.com/3546868449544308'><img src="https://img.shields.io/badge/bilibili-00A1D6.svg?logo=bilibili&logoColor=white" /></a>&nbsp;
-<a href='https://www.youtube.com/@AI-Creator-is-here'><img src='https://badges.aleen42.com/src/youtube.svg' /></a>&nbsp;
-<img src='https://img.shields.io/github/stars/hkuds/videoagent' />
-
-</div>
-
 
 <div align="center">
 
@@ -147,16 +148,32 @@ graph TB
 ## 🚀 快速入门
 
 
-### 📥 **克隆与安装**
+### 从 PyPI 安装
+
+在 Python 3.10 环境中安装核心程序，并初始化工作区。
+
+```bash
+python -m pip install videoagent
+mkdir videoagent-workspace
+cd videoagent-workspace
+videoagent init
+```
+
+在 `environment/config/config.yml` 填写模型配置，再从工作区运行 `videoagent run`。处理视频需要 FFmpeg。使用本地模型的工作流还需准备对应工具、运行依赖和模型权重。
+
+### 📥 **克隆源码并安装完整媒体环境**
 
 
 ```bash
 git clone https://github.com/HKUDS/VideoAgent.git
+cd VideoAgent
 conda create --name videoagent python=3.10
 conda activate videoagent
 conda install -y -c conda-forge pynini==2.1.5 ffmpeg
 pip install -r requirements.txt
 ```
+
+可以把源码目录作为工作区，运行 `videoagent run` 或 `python main.py`。完整依赖清单在 `requirements-runtime.txt`，模型权重按实际使用的工作流下载即可。
 
 
 ### 📦 **模型下载**
@@ -293,8 +310,8 @@ llm:
 
 
 ```bash
-# 完成配置后，运行以下指令：
-python main.py
+# 在配置完成的工作区运行
+videoagent run
 # 控制台将输出：
 User Requirement: ...
 # 示例需求：

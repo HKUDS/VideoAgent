@@ -1,0 +1,9 @@
+llm:
+  deepseek_api_key: ""
+  deepseek_base_url: ""
+  claude_api_key: ""
+  claude_base_url: ""
+  gpt_api_key: ""
+  gpt_base_url: ""
+  gemini_api_key: ""
+  gemini_base_url: ""

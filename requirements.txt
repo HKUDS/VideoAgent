@@ -1,3 +1,3 @@
---extra-index-url https://download.pytorch.org/whl/cu121
---extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/
+-r requirements-runtime.txt
+-e ./tools/audio-preprocess
 -e .

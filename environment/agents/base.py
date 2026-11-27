@@ -48,7 +48,7 @@ class FunctionRegistry:
         if cls._initialized:
             return
 
-        tools_dir = Path(package_dir)
+        tools_dir = Path(__file__).resolve().parents[2] / package_dir
         if not tools_dir.exists():
             raise ValueError(f"Tools directory not found: {tools_dir}")
 

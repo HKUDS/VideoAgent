@@ -28,9 +28,7 @@ class VideoPreloader(BaseTool):
         warnings.filterwarnings("ignore")
         logging.getLogger("httpx").setLevel(logging.WARNING)
 
-        # Get the current file's directory
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.project_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
+        self.project_root = os.getcwd()
 
 
         # Add the tools directory to the path

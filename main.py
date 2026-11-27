@@ -2,8 +2,8 @@ import logging
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), 'tools/CosyVoice'))
-sys.path.append(os.path.join(os.path.dirname(__file__), 'tools/CosyVoice/third_party/Matcha-TTS'))
+for tool_dir in ("CosyVoice", "CosyVoice/third_party/Matcha-TTS", "fish-speech", "ImageBind"):
+    sys.path.append(os.path.abspath(os.path.join("tools", tool_dir)))
 
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("modelscope").setLevel(logging.WARNING)
@@ -75,4 +75,7 @@ def main():
     multi_agent.run()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except EOFError:
+        pass

@@ -115,9 +115,7 @@ class VideoContentQA(BaseTool):
             try:
                 logger.info("Initializing transcription model...")
                 
-                # Get the current file's directory and navigate to project root
-                current_dir = os.path.dirname(os.path.abspath(__file__))
-                parent_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
+                parent_root = os.getcwd()
                 
                 # Path to the Whisper model
                 model_path = os.path.join(parent_root, "tools", "whisper-large-v3-turbo")
@@ -419,11 +417,7 @@ class VideoContentQA(BaseTool):
         if isinstance(save_history, str):
             save_history = save_history.lower() in ('true', '1', 'yes', 'on')
 
-        # Get the current file's directory
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-
-        # Navigate to the project root directory
-        parent_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
+        parent_root = os.getcwd()
 
         # Define base directory paths
         dataset_dir = os.path.join(parent_root, 'dataset')
